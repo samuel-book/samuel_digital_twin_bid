@@ -4,6 +4,13 @@ parts:
 - caption: Bid (expanded versions)
   chapters:
   - file: bid/abstract
+ - caption: The book of why (summary)
+  chapters:
+  - file: The-Book-Of-Why/01_introduction
+  - file: The-Book-Of-Why/02_ladder_of_causation
+  - file: The-Book-Of-Why/03_genesis_of_causal_inference
+  - file: The-Book-Of-Why/04a_bayes_theorem
+  - file: The-Book-Of-Why/04b_bayesian_networks
 - caption: Background info
   chapters:
   - file: additional_material/01_simple_inverse_propensity_example
