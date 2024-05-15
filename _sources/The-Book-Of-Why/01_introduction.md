@@ -1,4 +1,7 @@
-# Introduction
+# The Book Of Why (Judea Pearl)
+
+
+## Introduction
 
 We naturally think in a causal way. If we understand the logic behind causal thinking, we could emulate it on modern computers, and create an "artificial scientist".
 
@@ -21,7 +24,7 @@ $P(L | do(D))$, with a control group of $P(L | do(not D))$
 
 The *do* operator signifies that we are dealing with an intervention.
 
-## The inference engine
+### The inference engine
 
 ![](images/inference_engine_blueprint.png)
 
@@ -47,10 +50,10 @@ It produces three kinds of output:
 
 Some questions may not be answered, such as if we know variable $Z$ affects both $D$ and $L$, but we have no measurement of $Z$. In such a case we may need to say the causal effect cannot be answered, or can only be answered by making a simplifying assumption that the effect of $Z$ is negligible.
 
-## Data
+### Data
 
 The causal model should ideally be produced *before* collecting data (and deciding what data to collect). The estimand can be designed before data is collected.
 
-## Causality in plain English
+### Causality in plain English
 
 *"We think of a cause as something that makes a difference, and the difference it makes must be the difference from what would have happened without it"* (David Lewis, putting counter-factuals at the heart of our intuition about causality).
