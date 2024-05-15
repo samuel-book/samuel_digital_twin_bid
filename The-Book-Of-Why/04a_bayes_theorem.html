@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A worked example of inverse propensity score &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
+    <title>Bayes and causal inference &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
   
   
   
@@ -57,10 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'additional_material/01_simple_inverse_propensity_example';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'The-Book-Of-Why/04a_bayes_theorem';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Bayesian networks" href="../The-Book-Of-Why/04b_bayesian_networks.html" />
+    <link rel="next" title="Bayesian networks" href="04b_bayesian_networks.html" />
+    <link rel="prev" title="From Buccaneers to Guinea Pigs: The genesis of Causal Inference" href="03_genesis_of_causal_inference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,8 +177,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../bid/abstract.html">Abstract</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background info</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">A worked example of inverse propensity score</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional_material/01_simple_inverse_propensity_example.html">A worked example of inverse propensity score</a></li>
 </ul>
 
     </div>
@@ -230,7 +233,7 @@
       
       
       
-      <li><a href="../_sources/additional_material/01_simple_inverse_propensity_example.md" target="_blank"
+      <li><a href="../_sources/The-Book-Of-Why/04a_bayes_theorem.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +317,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>A worked example of inverse propensity score</h1>
+    <h1>Bayes and causal inference</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,9 +327,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#induction-and-deduction">Induction and deduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-classification">Bayes theorem classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>
             </nav>
         </div>
@@ -338,31 +348,131 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="a-worked-example-of-inverse-propensity-score">
-<h1>A worked example of inverse propensity score<a class="headerlink" href="#a-worked-example-of-inverse-propensity-score" title="Link to this heading">#</a></h1>
-<p>From: <a class="reference external" href="https://www.youtube.com/watch?v=PfLYPt9ur4g">https://www.youtube.com/watch?v=PfLYPt9ur4g</a></p>
-<section id="the-problem">
-<h2>The problem:<a class="headerlink" href="#the-problem" title="Link to this heading">#</a></h2>
-<p>When trying to isolate the effect (<em>Y</em>) of Treatment <em>A</em>, we need to consider the confounder <em>Z</em> that affects both the probability of receiving treatment, and the outcome from treatment.</p>
-<p><img alt="" src="../_images/propensity_1.png" /></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bayes-and-causal-inference">
+<h1>Bayes and causal inference<a class="headerlink" href="#bayes-and-causal-inference" title="Link to this heading">#</a></h1>
+<p>#Bayes #Causal-Inference</p>
+<p>See also [[04_Bayesianism]]</p>
+<p>Rev Thomas Bayes 1702-1761.</p>
+<p><img alt="" src="../_images/thomas_bayes.png" /></p>
+<p>Bayes genius was to calculate the probably of a cause (the hypothesis) from the occurrence of an effect (the evidence). In Bayes’ day this was known as <em>inverse probability</em>.</p>
+<section id="induction-and-deduction">
+<h2>Induction and deduction<a class="headerlink" href="#induction-and-deduction" title="Link to this heading">#</a></h2>
+<p><strong>Induction</strong>: Evidence to hypothesis; generalising from observation.  Example of an inductive argument: “All ravens I have seen are black. Therefore ravens are black.”</p>
+<p><strong>Deduction</strong>: Hypothesis to conclusion; applying what is known. Example of a deductive argument: “All noble gasses are stable. Neon is a noble gas. Therefore neon is stable.” Multiple hypotheses may be generated (by induction), and their conclusions checked against the facts; “When you have eliminated the impossible, whatever remains, however improbable, must be the truth” (Sherlock Holmes).</p>
 </section>
-<section id="observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">
-<h2>Observed outcomes depending on the presence/absence of the confounder and treatment<a class="headerlink" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment" title="Link to this heading">#</a></h2>
-<p>We are given the number of good outcomes (Y=1)  and bad outcomes (Y=0) for when the confounder is present (Z=1) or absent (Z=0), and whether treatment was given (A=1) or not (A=0).</p>
-<p><img alt="" src="../_images/propensity_2.png" /></p>
-<p>When the confounder is present (Z=1), treatment is given 50% of the time. When treatment is given (when Z=1) treatment (A=1) has 90% good outcomes, and no treatment (A=0) has 30% good outcomes.</p>
-<p>When the confounder is absent (Z=0), treatment is given 75% of the time. When treatment is given (when Z=1) treatment (A=1) has 40% good outcomes, and no treatment (A=0) has 20% good outcomes.</p>
+<section id="bayes-theorem-classification">
+<h2>Bayes theorem classification<a class="headerlink" href="#bayes-theorem-classification" title="Link to this heading">#</a></h2>
+<p>From StatQuest…</p>
+<section id="bayes-theorem">
+<h3>Bayes theorem<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h3>
+<p>See: <a class="reference external" href="https://youtu.be/9wCnvr7Xw4E">https://youtu.be/9wCnvr7Xw4E</a></p>
+<p><img alt="" src="../_images/conditional_probabilties.png" /></p>
+<p>We can use conditional probabilities to answer questions like “What is the probability of someone not loving candy if they love soda?”</p>
+<p><em>p(not love C &amp; love S | love S) = p(not love C &amp; love S) / p(love S) = 0.71</em></p>
+<p>Note: Stating <em>not love C &amp; love S</em> when we have conditioned upon <em>love S</em> can be seen as redundant, and can be shorted to <em>p(not love C | love S)</em>, but writing out in full can help get the calculation right!</p>
+<p>With Bayes theorem we do not need to know all probabilities:</p>
+<p><span class="math notranslate nohighlight">\(P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}\)</span></p>
+<p><img alt="" src="../_images/bayes_theorem.png" /></p>
+<p>The <em>marginalization</em> is the combined probability of B if the hypothesis (A) is true, or not true:</p>
+<ul class="simple">
+<li><p>P(B) = P(A)P(B|A) + P(¬A)(B|¬A)</p></li>
+</ul>
+<p><em>Likelihood / marginalisation</em> is also known as the <em>likelihood ratio</em> - that is how much more likely is B given that A is true.</p>
+<p>We need to know one conditional; probability, P(B|A), but we construct the calculation so we use the conditional probability we can more readily estimate (what would the world look like if the hypothesis were true) in order to calculate the conditional probably that is harder to measure. We also need to observe the frequency of our evidence, B, and we need to start with a prior estimate of our hypothesis, A.</p>
+<p>Bayes may also be applied to ‘strength of belief’ in  a hypothesis, where new evidence, which gives us P(B) (or at least an estimate of it) is used to update confidence in hypothesis, A.</p>
 </section>
-<section id="eliminating-confounding-with-pseudo-populations">
-<h2>Eliminating confounding with pseudo-populations<a class="headerlink" href="#eliminating-confounding-with-pseudo-populations" title="Link to this heading">#</a></h2>
-<p>We eliminate confounding by predicting the outcomes for all patients with and without treatment. This creates 2 populations that are equivalent in all things apart from being given treatment.</p>
-<p>To predict the counter-factual outcomes (e.g what would have been the outcomes if those that had not received treatment were actually given it) we assume <em>exchangeability</em> within the groups stratified by the presence/absence of the confounder. So when the confounder is present (Z=1) we assume the outcomes for the entire group (60 patients) would be the same as the outcomes for those that actually were’t treated (30% good outcomes). We repeat this for when Z=0 (40 patients, where untreated will have 20% good outcomes).</p>
-<p><img alt="" src="../_images/propensity_3.png" /></p>
-<p>We repeat the same process predicting outcomes we would expect of all patients were treated (90% good outcomes for Z=1, and 40% good outcomes for Z=0)</p>
-<p><img alt="" src="../_images/propensity_4.png" /></p>
-<p>we now have predicted good/bad outcomes for the entire population (100 patients) with and without treatment.</p>
-<p><img alt="" src="../_images/propensity_5.png" /></p>
-<p>This gives us 82% good outcomes with treatment and 32% good outcomes without treatment, having removed the confounding effect of Z affecting both outcome and probability of receiving treatment.</p>
+<section id="probability-and-likelihood">
+<h3>Probability and likelihood<a class="headerlink" href="#probability-and-likelihood" title="Link to this heading">#</a></h3>
+<p>See: <a class="reference external" href="https://youtu.be/pYxNSUDSFH4">https://youtu.be/pYxNSUDSFH4</a></p>
+<ul class="simple">
+<li><p><em>Probability</em>: Given a fixed distribution, what is the probability of a given observation. Probabilities are areas under a fixed distribution: <span class="math notranslate nohighlight">\(pr(data|distribution)\)</span>.</p></li>
+<li><p><em>Likelihood</em>: Given a fixed observation, what is the likelihood of seeing that observation with the given distribution? <span class="math notranslate nohighlight">\(L(distribution|data)\)</span>.</p></li>
+</ul>
+<p><img alt="" src="../_images/likelihood_probability.png" /></p>
+</section>
+</section>
+<section id="a-worked-example">
+<h2>A worked example<a class="headerlink" href="#a-worked-example" title="Link to this heading">#</a></h2>
+<p>We are told a person is shy and likes to keep things tidy. Are they most likely a librarian?</p>
+<ul class="simple">
+<li><p>Let us assume there are 20X more farmers than librarians (our population is a librarian + 21 farmer)</p>
+<ul>
+<li><p>Our Prior, <em>P(H)</em>, of it being a librarian is therefore 1/21</p></li>
+</ul>
+</li>
+<li><p>But librarians are 4X more likely to be shy and tidy, compared to farmers</p></li>
+<li><p>Let us perform calculations based on  a population of 10 librarians and 200 farmers:</p>
+<ul>
+<li><p>Our Hypothesis is that we are looking at a librarian</p></li>
+<li><p>The probability of the evidence if our hypothesis is true, P(E|H) is 0.4</p>
+<ul>
+<li><p>Multiplied by the prior probability of the hypothesis being true, <em>P(H, 1/21)</em>  = 0.0190</p></li>
+</ul>
+</li>
+<li><p>The probability of the evidence if our hypothesis is false, P(E|¬H) is 0.1</p>
+<ul>
+<li><p>Multiplied by the prior probability of the hypothesis being false, <em>P(¬H, 20/21)</em> = 0.0952</p></li>
+</ul>
+</li>
+<li><p>The overall probability of seeing the evidence is therefore:</p>
+<ul>
+<li><p>(1/21 x 0.4) + (20/21 * 0.1) = 0.1143</p></li>
+</ul>
+</li>
+<li><p>The probability of the hypothesis being true, given the evidence:</p>
+<ul>
+<li><p>0.0190 / 0.1143 = 0.167</p></li>
+</ul>
+</li>
+<li><p>Given the evidence (a shy tidy person), but also given our prior knowledge of the ratio of librarians to farmers, there is only a 16.7% probability the person described is a librarian.</p></li>
+</ul>
+</li>
+<li><p>Another way of looking at this is to ask of all the cases where E is true (20 farmers + 4 librarians), what proportion are librarians = 4/24 = 0.167.</p></li>
+</ul>
+<p><img alt=" " src="../_images/bayes_worked_example.png" /></p>
+</section>
+<section id="another-worked-example">
+<h2>Another worked example<a class="headerlink" href="#another-worked-example" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A disease has a incidence rate in the general population of 0.1%.</p></li>
+<li><p>A test has been developed:</p>
+<ul>
+<li><p>100% sensitivity: P(positive|disease) = 1.0</p></li>
+<li><p>5% false positive: P(positive|no disease) = 0.05</p></li>
+</ul>
+</li>
+<li><p>Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?</p>
+<ul>
+<li><p>We want to compute P(disease|positive)</p></li>
+<li><p>Let’s imagine 1000 people</p></li>
+<li><p>1 person will have the disease, 999 do not</p></li>
+<li><p>The 1 disease person will test positive</p></li>
+<li><p>Of 999 non-positive ~50 will test positive</p></li>
+<li><p>So 1 real disease out of 51 non-disease positive</p></li>
+<li><p>= 1/51= 0.0196 = ~2%</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/bayes_worked_example_2.png" /></p>
+</section>
+<section id="naive-bayes-multinomial-naive-bayes">
+<h2>Naive Bayes (Multinomial Naive Bayes)<a class="headerlink" href="#naive-bayes-multinomial-naive-bayes" title="Link to this heading">#</a></h2>
+<p>See: <a class="reference external" href="https://youtu.be/O2L2Uv9pdDA">https://youtu.be/O2L2Uv9pdDA</a></p>
+<p>Spam example:</p>
+<ul class="simple">
+<li><p>Start with <em>prior probability</em> of a message being normal or spam (e.g. use proportion of messages that are spam).</p></li>
+<li><p>Multiply by the probabilities of each word being in a normal or spam message.</p></li>
+<li><p>Resulting probabilities are proportional to the probability of being normal or spam; so take the highest probability.</p></li>
+</ul>
+<p><img alt="" src="../_images/naive_bayes.png" /></p>
+<p>But, in the above example ‘lunch’ is given 0 probability in spam as it has not been observed. This would mean that the resulting spam probability for a message with ‘lunch’ in it will always be zero, no matter the make-up of other words. To get around this people usually add a constant (<span class="math notranslate nohighlight">\(\alpha\)</span>) to all measured word frequencies in both normal and spam messages.</p>
+<p>Naive Bayes is <em>naive</em> because it ignores word orders (it uses ‘bag of words’).</p>
+</section>
+<section id="gaussian-naive-bayes-classifier">
+<h2>Gaussian Naive Bayes Classifier<a class="headerlink" href="#gaussian-naive-bayes-classifier" title="Link to this heading">#</a></h2>
+<p>See: <a class="reference external" href="https://youtu.be/H3EjCKtlVog">https://youtu.be/H3EjCKtlVog</a></p>
+<p>Data is summarised in Gaussian distributions for each feature. Given a new case, we use the distributions to calculate likelihood for each feature value occurring for each class, and apply the naive Bayes method as above.</p>
+<p>Using natural log values (and adding these logs) for the calculation avoids <em>underflow</em> calculation errors, where values are too low for CPU to calculate properly.</p>
 </section>
 </section>
 
@@ -379,7 +489,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./additional_material"
+            path: "./The-Book-Of-Why"
         },
         predefinedOutput: true
     }
@@ -397,13 +507,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../The-Book-Of-Why/04b_bayesian_networks.html"
+       href="03_genesis_of_causal_inference.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04b_bayesian_networks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bayesian networks</p>
       </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -421,9 +540,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#induction-and-deduction">Induction and deduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-classification">Bayes theorem classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>
   </nav></div>
 

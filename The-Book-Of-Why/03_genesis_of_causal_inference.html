@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A worked example of inverse propensity score &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
+    <title>From Buccaneers to Guinea Pigs: The genesis of Causal Inference &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
   
   
   
@@ -57,10 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'additional_material/01_simple_inverse_propensity_example';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'The-Book-Of-Why/03_genesis_of_causal_inference';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Bayesian networks" href="../The-Book-Of-Why/04b_bayesian_networks.html" />
+    <link rel="next" title="Bayes and causal inference" href="04a_bayes_theorem.html" />
+    <link rel="prev" title="The ladder of causation" href="02_ladder_of_causation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,8 +177,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../bid/abstract.html">Abstract</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background info</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">A worked example of inverse propensity score</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional_material/01_simple_inverse_propensity_example.html">A worked example of inverse propensity score</a></li>
 </ul>
 
     </div>
@@ -230,7 +233,7 @@
       
       
       
-      <li><a href="../_sources/additional_material/01_simple_inverse_propensity_example.md" target="_blank"
+      <li><a href="../_sources/The-Book-Of-Why/03_genesis_of_causal_inference.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +317,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>A worked example of inverse propensity score</h1>
+    <h1>From Buccaneers to Guinea Pigs: The genesis of Causal Inference</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,9 +327,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#francis-galton-and-karl-pearson">Francis Galton and Karl Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sewall-wright">Sewall Wright</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-by-wright">A worked example by Wright</a></li>
 </ul>
             </nav>
         </div>
@@ -338,31 +341,40 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="a-worked-example-of-inverse-propensity-score">
-<h1>A worked example of inverse propensity score<a class="headerlink" href="#a-worked-example-of-inverse-propensity-score" title="Link to this heading">#</a></h1>
-<p>From: <a class="reference external" href="https://www.youtube.com/watch?v=PfLYPt9ur4g">https://www.youtube.com/watch?v=PfLYPt9ur4g</a></p>
-<section id="the-problem">
-<h2>The problem:<a class="headerlink" href="#the-problem" title="Link to this heading">#</a></h2>
-<p>When trying to isolate the effect (<em>Y</em>) of Treatment <em>A</em>, we need to consider the confounder <em>Z</em> that affects both the probability of receiving treatment, and the outcome from treatment.</p>
-<p><img alt="" src="../_images/propensity_1.png" /></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="from-buccaneers-to-guinea-pigs-the-genesis-of-causal-inference">
+<h1>From Buccaneers to Guinea Pigs: The genesis of Causal Inference<a class="headerlink" href="#from-buccaneers-to-guinea-pigs-the-genesis-of-causal-inference" title="Link to this heading">#</a></h1>
+<section id="francis-galton-and-karl-pearson">
+<h2>Francis Galton and Karl Pearson<a class="headerlink" href="#francis-galton-and-karl-pearson" title="Link to this heading">#</a></h2>
+<p>Galton’s ‘<em>quincunx</em>’ or ‘<em>Galton board</em>’ showed how individual random events produced a reproducible population on frequencies. A series of left/right random events lead to a normal distribution of frequencies. Galton used this as a model of inheritance - each generation inherits from the previous generation but can be a little to either side. But inherited distributions, such as height, do not get wider with successive generations. To fix this Galton had to add a layer which brought balls back closer to the centre - a law of ‘regression to the mean’ (or ‘regression toward mediocrity’).</p>
+<p><img alt="" src="../_images/quincunx.png" /></p>
+<p>Galton found that fathers and sons heights were co-related, or correlated. But the relationship and the tendency towards the mean was bidirectional - a tall son is likely to have a taller than average father, but not as tall as the son, and vice versa. This co-relation could not therefore be interpreted as directly causal (as the son can not cause attributes of the father).</p>
+<p>In Galton’s model the next generation inherits the ‘chance’ that applied to the previous generation. But this is wrong - ‘chance’ is additive to inheritance, but it is not passed on to the next generation (though perhaps a vestige of chance is, with things like success?).</p>
+<p>Karl Person saw causation as just a special case of correlation (that he had developed); causation set the natural limit to correlation. Pearson believe causation could not be proved scientifically - that what people saw as causation was just a repetition of sequence, but there was no proof that the sequence must always repeat in the future.</p>
 </section>
-<section id="observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">
-<h2>Observed outcomes depending on the presence/absence of the confounder and treatment<a class="headerlink" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment" title="Link to this heading">#</a></h2>
-<p>We are given the number of good outcomes (Y=1)  and bad outcomes (Y=0) for when the confounder is present (Z=1) or absent (Z=0), and whether treatment was given (A=1) or not (A=0).</p>
-<p><img alt="" src="../_images/propensity_2.png" /></p>
-<p>When the confounder is present (Z=1), treatment is given 50% of the time. When treatment is given (when Z=1) treatment (A=1) has 90% good outcomes, and no treatment (A=0) has 30% good outcomes.</p>
-<p>When the confounder is absent (Z=0), treatment is given 75% of the time. When treatment is given (when Z=1) treatment (A=1) has 40% good outcomes, and no treatment (A=0) has 20% good outcomes.</p>
+<section id="sewall-wright">
+<h2>Sewall Wright<a class="headerlink" href="#sewall-wright" title="Link to this heading">#</a></h2>
+<p>Sewall Wright was investigating genetics - looking at colour patterns in guinea-pigs.</p>
+<p><img alt="" src="../_images/sewall_wright.png" /></p>
+<p>Inheritance of colour patches did not appear to follow Mendelian rules - it was not possible to fix colour patterns by in-breeding. Wright proposed that ‘developmental factors’ in the womb were causing some of the variations.</p>
+<p>Wright framed this as a mathematical problem with <span class="math notranslate nohighlight">\(d\)</span> (developmental) and <span class="math notranslate nohighlight">\(h\)</span> (hereditary) values to be determined. To work out the algebra needed he drew things out as a <em>path diagram</em>:</p>
+<p><img alt="" src="../_images/path_diagram.png" /></p>
+<p>Wright showed that in a randomly bred population of guinea pigs, 42% of the variation was due to developmental factors, and 42% due to hereditary. In a highly inbred family only 3% of variation was due to hereditary, and 92% was due to developmental factors. <em>Chance</em> in the above diagram relates to which genes are passed from mother/father (this was not a mechanism understood at the time).</p>
+<p>The path diagram is powerful as the the coefficients along a path may be multiplied to get the strength of each path. Omitted arrows communicate that there is no causal link.</p>
+<p>When relationships are not known, Wright argued that the causal path diagram can be used to test hypothesised causal paths - if the hypothesised path does not predict the actual data then that path may be dismissed. <strong>Causal path diagrams always require some causal hypothesis.</strong></p>
 </section>
-<section id="eliminating-confounding-with-pseudo-populations">
-<h2>Eliminating confounding with pseudo-populations<a class="headerlink" href="#eliminating-confounding-with-pseudo-populations" title="Link to this heading">#</a></h2>
-<p>We eliminate confounding by predicting the outcomes for all patients with and without treatment. This creates 2 populations that are equivalent in all things apart from being given treatment.</p>
-<p>To predict the counter-factual outcomes (e.g what would have been the outcomes if those that had not received treatment were actually given it) we assume <em>exchangeability</em> within the groups stratified by the presence/absence of the confounder. So when the confounder is present (Z=1) we assume the outcomes for the entire group (60 patients) would be the same as the outcomes for those that actually were’t treated (30% good outcomes). We repeat this for when Z=0 (40 patients, where untreated will have 20% good outcomes).</p>
-<p><img alt="" src="../_images/propensity_3.png" /></p>
-<p>We repeat the same process predicting outcomes we would expect of all patients were treated (90% good outcomes for Z=1, and 40% good outcomes for Z=0)</p>
-<p><img alt="" src="../_images/propensity_4.png" /></p>
-<p>we now have predicted good/bad outcomes for the entire population (100 patients) with and without treatment.</p>
-<p><img alt="" src="../_images/propensity_5.png" /></p>
-<p>This gives us 82% good outcomes with treatment and 32% good outcomes without treatment, having removed the confounding effect of Z affecting both outcome and probability of receiving treatment.</p>
+<section id="a-worked-example-by-wright">
+<h2>A worked example by Wright<a class="headerlink" href="#a-worked-example-by-wright" title="Link to this heading">#</a></h2>
+<p>How much does a guinea-pig pup grow in the womb just before birth?</p>
+<p>A simple look at the data suggests that guinea-pigs born with an extra day of gestation are 5.66g heavier. But guinea-pigs born later tend to come from smaller litter sizes which also affects growth. How do we disentangle these things?</p>
+<p><img alt="" src="../_images/growth.png" /></p>
+<p><strong>The causal effect is the product of coefficients along a given causal path.</strong></p>
+<ul class="simple">
+<li><p>The direct path is represented by path P -&gt; X, or the coefficient <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+<li><p>The bias due to litter size, L, is the paths P &lt;- L -&gt; Q -&gt; X. The bias is the product of the path coefficients along those paths, or <span class="math notranslate nohighlight">\(l.l'.q\)</span>.</p></li>
+<li><p>The total correlation is the sum of the direct path and the litter size path, or <span class="math notranslate nohighlight">\(p + (l.l'.q) = 5.66\)</span></p></li>
+<li><p>We can measure the correlations of the pairs (P, X), (L, X), (L,P), and algebraically we can then calculate <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(l'\)</span>, and <span class="math notranslate nohighlight">\(l.q\)</span>.</p></li>
+<li><p>Wright solved this to show that <span class="math notranslate nohighlight">\(p\)</span> was 3.34g per day, teasing apart growth rate due to gestation from the effect on litter size.</p></li>
+</ul>
 </section>
 </section>
 
@@ -379,7 +391,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./additional_material"
+            path: "./The-Book-Of-Why"
         },
         predefinedOutput: true
     }
@@ -397,13 +409,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../The-Book-Of-Why/04b_bayesian_networks.html"
+       href="02_ladder_of_causation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bayesian networks</p>
+        <p class="prev-next-title">The ladder of causation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="04a_bayes_theorem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bayes and causal inference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -421,9 +442,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#francis-galton-and-karl-pearson">Francis Galton and Karl Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sewall-wright">Sewall Wright</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-by-wright">A worked example by Wright</a></li>
 </ul>
   </nav></div>
 

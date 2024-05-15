@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A worked example of inverse propensity score &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
+    <title>Introduction &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
   
   
   
@@ -57,10 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'additional_material/01_simple_inverse_propensity_example';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'The-Book-Of-Why/01_introduction';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Bayesian networks" href="../The-Book-Of-Why/04b_bayesian_networks.html" />
+    <link rel="next" title="The ladder of causation" href="02_ladder_of_causation.html" />
+    <link rel="prev" title="Abstract" href="../bid/abstract.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,8 +177,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../bid/abstract.html">Abstract</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background info</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">A worked example of inverse propensity score</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional_material/01_simple_inverse_propensity_example.html">A worked example of inverse propensity score</a></li>
 </ul>
 
     </div>
@@ -230,7 +233,7 @@
       
       
       
-      <li><a href="../_sources/additional_material/01_simple_inverse_propensity_example.md" target="_blank"
+      <li><a href="../_sources/The-Book-Of-Why/01_introduction.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +317,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>A worked example of inverse propensity score</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,9 +327,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
 </ul>
             </nav>
         </div>
@@ -338,31 +341,52 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="a-worked-example-of-inverse-propensity-score">
-<h1>A worked example of inverse propensity score<a class="headerlink" href="#a-worked-example-of-inverse-propensity-score" title="Link to this heading">#</a></h1>
-<p>From: <a class="reference external" href="https://www.youtube.com/watch?v=PfLYPt9ur4g">https://www.youtube.com/watch?v=PfLYPt9ur4g</a></p>
-<section id="the-problem">
-<h2>The problem:<a class="headerlink" href="#the-problem" title="Link to this heading">#</a></h2>
-<p>When trying to isolate the effect (<em>Y</em>) of Treatment <em>A</em>, we need to consider the confounder <em>Z</em> that affects both the probability of receiving treatment, and the outcome from treatment.</p>
-<p><img alt="" src="../_images/propensity_1.png" /></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>We naturally think in a causal way. If we understand the logic behind causal thinking, we could emulate it on modern computers, and create an “artificial scientist”.</p>
+<p><em>“Lucky is he who has been able to understand the causes of things”</em> Virgil, 29 BC.</p>
+<p>Data is not enough for causal inference work.</p>
+<p>Causal inference has two parallel approaches:</p>
+<ol class="arabic simple">
+<li><p>Causal diagrams (directed acyclic graphs)</p></li>
+<li><p>Symbolic language for mathematical approach</p></li>
+</ol>
+<p>These approaches should make clear what assumptions are being made, and what questions are being asked.</p>
+<p>The causal model should depict (qualitatively and/or quantitatively) the process that generates the observed data.</p>
+<p>An example of the symbolic language, for asking how a drug, D, affects lifespan, L, is:</p>
+<p><span class="math notranslate nohighlight">\(P(L | do(D))\)</span>, with a control group of <span class="math notranslate nohighlight">\(P(L | do(not D))\)</span></p>
+<p>The <em>do</em> operator signifies that we are dealing with an intervention.</p>
+<section id="the-inference-engine">
+<h2>The inference engine<a class="headerlink" href="#the-inference-engine" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../_images/inference_engine_blueprint.png" /></p>
+<p>A blueprint of an inference engine is shown above. Such an engine needs three kinds of input:</p>
+<ol class="arabic simple">
+<li><p>Data</p></li>
+<li><p>Assumptions (often come from prior knowledge, which is simplified/structured into assumptions)</p></li>
+<li><p>Queries (such as <span class="math notranslate nohighlight">\(P(L | do(D))\)</span>)</p></li>
+</ol>
+<p>The causal model may be in several forms, such as:</p>
+<ul class="simple">
+<li><p>Causal diagram</p></li>
+<li><p>Structure equations</p></li>
+<li><p>Logical statements</p></li>
+</ul>
+<p>The causal model aims at mimicking the processes that lead to the data, and can be tested for “degree of fitness” - the degree to which the data are compatible with the model’s assumptions.</p>
+<p>It produces three kinds of output:</p>
+<ol class="arabic simple">
+<li><p>A <em>yes/no</em> on whether a query can be answered under the current causal model, assuming sufficient data.</p></li>
+<li><p>An <em>Estimand</em> (‘that to be estimated’) - the mathematical formula for generating the answer from the input data. For example <span class="math notranslate nohighlight">\(P(L | do(D))\)</span> may be estimated by conditioning <span class="math notranslate nohighlight">\(P(L|D)\)</span> on other variables, <span class="math notranslate nohighlight">\(Z\)</span>, as in <span class="math notranslate nohighlight">\(P(L | D,Z).P(Z)\)</span>. The estimand is the assumed mathematical causal model.</p></li>
+<li><p>An <em>Estimate</em> of the causal effect in question (we should also look for uncertainty due to sampling).</p></li>
+</ol>
+<p>Some questions may not be answered, such as if we know variable <span class="math notranslate nohighlight">\(Z\)</span> affects both <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(L\)</span>, but we have no measurement of <span class="math notranslate nohighlight">\(Z\)</span>. In such a case we may need to say the causal effect cannot be answered, or can only be answered by making a simplifying assumption that the effect of <span class="math notranslate nohighlight">\(Z\)</span> is negligible.</p>
 </section>
-<section id="observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">
-<h2>Observed outcomes depending on the presence/absence of the confounder and treatment<a class="headerlink" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment" title="Link to this heading">#</a></h2>
-<p>We are given the number of good outcomes (Y=1)  and bad outcomes (Y=0) for when the confounder is present (Z=1) or absent (Z=0), and whether treatment was given (A=1) or not (A=0).</p>
-<p><img alt="" src="../_images/propensity_2.png" /></p>
-<p>When the confounder is present (Z=1), treatment is given 50% of the time. When treatment is given (when Z=1) treatment (A=1) has 90% good outcomes, and no treatment (A=0) has 30% good outcomes.</p>
-<p>When the confounder is absent (Z=0), treatment is given 75% of the time. When treatment is given (when Z=1) treatment (A=1) has 40% good outcomes, and no treatment (A=0) has 20% good outcomes.</p>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>The causal model should ideally be produced <em>before</em> collecting data (and deciding what data to collect). The estimand can be designed before data is collected.</p>
 </section>
-<section id="eliminating-confounding-with-pseudo-populations">
-<h2>Eliminating confounding with pseudo-populations<a class="headerlink" href="#eliminating-confounding-with-pseudo-populations" title="Link to this heading">#</a></h2>
-<p>We eliminate confounding by predicting the outcomes for all patients with and without treatment. This creates 2 populations that are equivalent in all things apart from being given treatment.</p>
-<p>To predict the counter-factual outcomes (e.g what would have been the outcomes if those that had not received treatment were actually given it) we assume <em>exchangeability</em> within the groups stratified by the presence/absence of the confounder. So when the confounder is present (Z=1) we assume the outcomes for the entire group (60 patients) would be the same as the outcomes for those that actually were’t treated (30% good outcomes). We repeat this for when Z=0 (40 patients, where untreated will have 20% good outcomes).</p>
-<p><img alt="" src="../_images/propensity_3.png" /></p>
-<p>We repeat the same process predicting outcomes we would expect of all patients were treated (90% good outcomes for Z=1, and 40% good outcomes for Z=0)</p>
-<p><img alt="" src="../_images/propensity_4.png" /></p>
-<p>we now have predicted good/bad outcomes for the entire population (100 patients) with and without treatment.</p>
-<p><img alt="" src="../_images/propensity_5.png" /></p>
-<p>This gives us 82% good outcomes with treatment and 32% good outcomes without treatment, having removed the confounding effect of Z affecting both outcome and probability of receiving treatment.</p>
+<section id="causality-in-plain-english">
+<h2>Causality in plain English<a class="headerlink" href="#causality-in-plain-english" title="Link to this heading">#</a></h2>
+<p><em>“We think of a cause as something that makes a difference, and the difference it makes must be the difference from what would have happened without it”</em> (David Lewis, putting counter-factuals at the heart of our intuition about causality).</p>
 </section>
 </section>
 
@@ -379,7 +403,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./additional_material"
+            path: "./The-Book-Of-Why"
         },
         predefinedOutput: true
     }
@@ -397,13 +421,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../The-Book-Of-Why/04b_bayesian_networks.html"
+       href="../bid/abstract.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bayesian networks</p>
+        <p class="prev-next-title">Abstract</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="02_ladder_of_causation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The ladder of causation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -421,9 +454,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The problem:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observed-outcomes-depending-on-the-presence-absence-of-the-confounder-and-treatment">Observed outcomes depending on the presence/absence of the confounder and treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-confounding-with-pseudo-populations">Eliminating confounding with pseudo-populations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
 </ul>
   </nav></div>
 
