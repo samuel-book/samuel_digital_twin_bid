@@ -3,6 +3,7 @@ root: intro
 parts:
 - caption: Bid (expanded versions)
   chapters:
+  - file: links_to_old_bid
   - file: bid/abstract
 - caption: The Book of Why (summary)
   chapters:
