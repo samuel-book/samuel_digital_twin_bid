@@ -16,9 +16,6 @@ launch_buttons:
   
 # Citation style, and rendering mermaid diagrams
 sphinx:
-  config:
-    bibtex_default_style: unsrt
-    bibtex_reference_style: super
   extra_extensions:
   - sphinxcontrib.mermaid
   
