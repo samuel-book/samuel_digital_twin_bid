@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Book Of Why (Judea Pearl) &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
+    <title>Introduction to The Book Of Why (Judea Pearl) &#8212; SAMueL Patient Optimised Pathways (SAMueL-POP) bid</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -178,7 +178,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Book of Why (summary)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Book Of Why (Judea Pearl)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to The Book Of Why (Judea Pearl)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_ladder_of_causation.html">The ladder of causation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_genesis_of_causal_inference.html">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04a_bayes_theorem.html">Bayes and causal inference</a></li>
@@ -325,7 +325,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Book Of Why (Judea Pearl)</h1>
+    <h1>Introduction to The Book Of Why (Judea Pearl)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -335,12 +335,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
 </ul>
             </nav>
         </div>
@@ -352,10 +349,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-book-of-why-judea-pearl">
-<h1>The Book Of Why (Judea Pearl)<a class="headerlink" href="#the-book-of-why-judea-pearl" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-the-book-of-why-judea-pearl">
+<h1>Introduction to The Book Of Why (Judea Pearl)<a class="headerlink" href="#introduction-to-the-book-of-why-judea-pearl" title="Link to this heading">#</a></h1>
 <p>We naturally think in a causal way. If we understand the logic behind causal thinking, we could emulate it on modern computers, and create an “artificial scientist”.</p>
 <p><em>“Lucky is he who has been able to understand the causes of things”</em> Virgil, 29 BC.</p>
 <p>Data is not enough for causal inference work.</p>
@@ -370,7 +365,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(P(L | do(D))\)</span>, with a control group of <span class="math notranslate nohighlight">\(P(L | do(not D))\)</span></p>
 <p>The <em>do</em> operator signifies that we are dealing with an intervention.</p>
 <section id="the-inference-engine">
-<h3>The inference engine<a class="headerlink" href="#the-inference-engine" title="Link to this heading">#</a></h3>
+<h2>The inference engine<a class="headerlink" href="#the-inference-engine" title="Link to this heading">#</a></h2>
 <p><img alt="" src="../_images/inference_engine_blueprint.png" /></p>
 <p>A blueprint of an inference engine is shown above. Such an engine needs three kinds of input:</p>
 <ol class="arabic simple">
@@ -394,13 +389,12 @@ document.write(`
 <p>Some questions may not be answered, such as if we know variable <span class="math notranslate nohighlight">\(Z\)</span> affects both <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(L\)</span>, but we have no measurement of <span class="math notranslate nohighlight">\(Z\)</span>. In such a case we may need to say the causal effect cannot be answered, or can only be answered by making a simplifying assumption that the effect of <span class="math notranslate nohighlight">\(Z\)</span> is negligible.</p>
 </section>
 <section id="data">
-<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>The causal model should ideally be produced <em>before</em> collecting data (and deciding what data to collect). The estimand can be designed before data is collected.</p>
 </section>
 <section id="causality-in-plain-english">
-<h3>Causality in plain English<a class="headerlink" href="#causality-in-plain-english" title="Link to this heading">#</a></h3>
+<h2>Causality in plain English<a class="headerlink" href="#causality-in-plain-english" title="Link to this heading">#</a></h2>
 <p><em>“We think of a cause as something that makes a difference, and the difference it makes must be the difference from what would have happened without it”</em> (David Lewis, putting counter-factuals at the heart of our intuition about causality).</p>
-</section>
 </section>
 </section>
 
@@ -468,12 +462,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inference-engine">The inference engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-in-plain-english">Causality in plain English</a></li>
 </ul>
   </nav></div>
 
