@@ -1,0 +1,10 @@
+format: jb-book
+root: intro
+parts:
+- caption: Bid (expanded versions)
+  chapters:
+  - file: bid/abstract
+- caption: Background info
+  chapters:
+  - file: additional_material/01_simple_inverse_propensity_example
+
