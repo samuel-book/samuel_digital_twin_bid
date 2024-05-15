@@ -1,13 +1,12 @@
 # The ladder of causation
 
-#Causal-Inference 
-
 *"Probabilities, even conditional probabilities, alone encode our beliefs about a static observed world, causality tells us whether probabilities change when the world changes - be it by intervention or by act of imagination."*
 
 * Causal explanations make up the bulk of our knowledge.
 * Causal understanding allows us to manipulate our environment.
 * We can imagine 'what if?' counter-factual scenarios in a mental model that includes multiple variables.
 * Causal understanding involves seeing, doing (and learning from experience), and imagining.
+
 ## Three levels of causation
 
 ![](images/causal_ladder.png)

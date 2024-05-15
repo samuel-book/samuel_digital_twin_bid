@@ -18,7 +18,12 @@ Using our example of a diagnostic test for breast cancer, applied to a 40 year o
 * Sensitivity = 0.75
 * Specificity = 0.88 (FP = 0.12)
 
+```{mermaid}
+flowchart LR
+
 A[Disease] --> C[Test]
+
+```
 
 Conditional probability table for the link between Disease and Test.
 
@@ -30,7 +35,7 @@ Conditional probability table for the link between Disease and Test.
 ### Lost bag example
 Let's imagine we are waiting for a bag after a flight. The probability of the bag being on the carousel depends on (1) whether the bag was on the plane, and (2) how long it has been since the plane landed:
 
-```mermaid
+```{mermaid}
 flowchart TB
 
 A[Bag on plane] --> C[Bag on carousel]

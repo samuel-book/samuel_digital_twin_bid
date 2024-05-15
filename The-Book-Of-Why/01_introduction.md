@@ -1,7 +1,5 @@
 # Introduction
 
-#Causal-Inference
-
 We naturally think in a causal way. If we understand the logic behind causal thinking, we could emulate it on modern computers, and create an "artificial scientist".
 
 *"Lucky is he who has been able to understand the causes of things"* Virgil, 29 BC.
@@ -26,6 +24,7 @@ The *do* operator signifies that we are dealing with an intervention.
 ## The inference engine
 
 ![](images/inference_engine_blueprint.png)
+
 A blueprint of an inference engine is shown above. Such an engine needs three kinds of input:
 
 1. Data
