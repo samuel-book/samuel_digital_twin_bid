@@ -4,7 +4,7 @@ parts:
 - caption: Bid (expanded versions)
   chapters:
   - file: bid/abstract
- - caption: The book of why (summary)
+- caption: The Book of Why (summary)
   chapters:
   - file: The-Book-Of-Why/01_introduction
   - file: The-Book-Of-Why/02_ladder_of_causation

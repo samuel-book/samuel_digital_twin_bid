@@ -13,3 +13,13 @@ execute:
 launch_buttons:
   notebook_interface        : classic  
   binderhub_url             : ""
+  
+# Citation style, and rendering mermaid diagrams
+sphinx:
+  config:
+    bibtex_default_style: unsrt
+    bibtex_reference_style: super
+  extra_extensions:
+  - sphinxcontrib.mermaid
+  
+# pip install sphinxcontrib-mermaid 

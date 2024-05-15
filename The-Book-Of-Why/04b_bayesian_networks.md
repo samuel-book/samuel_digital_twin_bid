@@ -18,12 +18,7 @@ Using our example of a diagnostic test for breast cancer, applied to a 40 year o
 * Sensitivity = 0.75
 * Specificity = 0.88 (FP = 0.12)
 
-```mermaid
-flowchart LR
-
 A[Disease] --> C[Test]
-
-```
 
 Conditional probability table for the link between Disease and Test.
 

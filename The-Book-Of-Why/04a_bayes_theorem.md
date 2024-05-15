@@ -20,7 +20,9 @@ Bayes genius was to calculate the probably of a cause (the hypothesis) from the 
 From StatQuest...
 
 ### Bayes theorem
-https://youtu.be/9wCnvr7Xw4E
+
+
+See: https://youtu.be/9wCnvr7Xw4E
 
 ![](images/conditional_probabilties.png)
 
@@ -46,7 +48,8 @@ We need to know one conditional; probability, P(B|A), but we construct the calcu
 Bayes may also be applied to 'strength of belief' in  a hypothesis, where new evidence, which gives us P(B) (or at least an estimate of it) is used to update confidence in hypothesis, A.           
 
 ### Probability and likelihood
-https://youtu.be/pYxNSUDSFH4
+
+See: https://youtu.be/pYxNSUDSFH4
 	
 * *Probability*: Given a fixed distribution, what is the probability of a given observation. Probabilities are areas under a fixed distribution: $pr(data|distribution)$.
  
@@ -77,8 +80,6 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 
 ![ ](./images/bayes_worked_example.png)
 
-![](../Modelling-Mindsets/images/Bayes_theorem.mp4)
-
 ## Another worked example
 
 * A disease has a incidence rate in the general population of 0.1%.
@@ -98,20 +99,23 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 
 
 ## Naive Bayes (Multinomial Naive Bayes)
-https://youtu.be/O2L2Uv9pdDA
+
+See: https://youtu.be/O2L2Uv9pdDA
 
 Spam example: 
 * Start with *prior probability* of a message being normal or spam (e.g. use proportion of messages that are spam).
 * Multiply by the probabilities of each word being in a normal or spam message.
 * Resulting probabilities are proportional to the probability of being normal or spam; so take the highest probability.
 
-![](naive_bayes.png)
+![](images/naive_bayes.png)
+
 But, in the above example 'lunch' is given 0 probability in spam as it has not been observed. This would mean that the resulting spam probability for a message with 'lunch' in it will always be zero, no matter the make-up of other words. To get around this people usually add a constant ($\alpha$) to all measured word frequencies in both normal and spam messages.
 
 Naive Bayes is *naive* because it ignores word orders (it uses 'bag of words').
 
 ## Gaussian Naive Bayes Classifier
-https://youtu.be/H3EjCKtlVog
+
+See: https://youtu.be/H3EjCKtlVog
 
 Data is summarised in Gaussian distributions for each feature. Given a new case, we use the distributions to calculate likelihood for each feature value occurring for each class, and apply the naive Bayes method as above.
 
