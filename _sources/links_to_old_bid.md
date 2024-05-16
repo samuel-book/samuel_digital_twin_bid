@@ -10,6 +10,6 @@
 
 ## Stroke impact (focuses on causal inference)
 
-[*project plan*](https://github.com/samuel-book/samuel_digital_twin_bid/blob/main/stroke-impact-archive/stroke_impact_project_plan.pdf)
+[*Project plan*](https://github.com/samuel-book/samuel_digital_twin_bid/blob/main/stroke-impact-archive/stroke_impact_project_plan.pdf)
 
 
